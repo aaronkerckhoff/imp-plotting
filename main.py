@@ -33,5 +33,5 @@ def get_starting_values():
     return m, c  # Return the values as a tuple
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # Only execute if this file is run directly and not imported
     main()
