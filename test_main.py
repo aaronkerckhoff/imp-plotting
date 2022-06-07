@@ -1,14 +1,35 @@
-from main import calculate_next_y
+import main
+from pytest import approx
 
 
-def test_calculate_next_y():
-    assert calculate_next_y(1, 2, 3) == 5
-    assert calculate_next_y(2, 2, 3) == 7
-    assert calculate_next_y(3, 2, 3) == 9
-    assert calculate_next_y(20, 1, 5) == 25
-    assert calculate_next_y(20, 2, 3) == 43
-    assert calculate_next_y(9, 1.5, 2) == 15.5
-    assert calculate_next_y(10, 1.5, 1) == 16
-    assert calculate_next_y(10, 2, 1.5) == 21.5
-    assert calculate_next_y(10, 2.5, 2) == 27
-    assert calculate_next_y(39, 2.5, 1.4) == 98.9
+# Test the different calculations
+def test_calculate_next_1():
+    assert main.calculate_next_1(1) == 1
+    assert main.calculate_next_1(2) == 4
+    assert main.calculate_next_1(3) == 9
+    assert main.calculate_next_1(3.5) == 12.25
+    assert main.calculate_next_1(5.5) == 30.25
+
+
+def test_calculate_next_2():
+    assert main.calculate_next_2(1) == 1
+    assert main.calculate_next_2(2) == 32
+    assert main.calculate_next_2(3) == 243
+    assert main.calculate_next_2(3.5) == 525.21875
+    assert main.calculate_next_2(5.5) == 5032.84375
+
+
+def test_calculate_next_3():
+    assert main.calculate_next_3(1) == 1
+    assert main.calculate_next_3(2) == approx(1.41421, 0.00001)
+    assert main.calculate_next_3(3) == approx(1.73205, 0.00001)
+    assert main.calculate_next_3(3.5) == approx(1.87083, 0.00001)
+    assert main.calculate_next_3(5.5) == approx(2.34520, 0.00001)
+
+
+def test_calculate_next_4():
+    assert main.calculate_next_4(1) == -1
+    assert main.calculate_next_4(2) == -32
+    assert main.calculate_next_4(3) == -243
+    assert main.calculate_next_4(3.5) == -525.21875
+    assert main.calculate_next_4(5.5) == -5032.84375
