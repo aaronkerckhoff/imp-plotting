@@ -1,15 +1,36 @@
+import plotly.express as px
+
+
 def main():
     m, c = get_starting_values()
-    # Iterate through the range of numbers from 1 to 100 as x
+    # Iterate through the range of numbers from 1 to 20 as x
     # and generate the next value for y
-    for x in range(1, 101):
-        pass
+    x_values = []
+    y_values = []
+    y = 1
+    for x in range(1, 21):
+        y = calculate_next_y(y, m, c)
+        # Append the x and y values to the lists
+        x_values.append(x)
+        y_values.append(y)
+    plot(x_values, y_values)
+
+
+# Calculate the next y value based on the current y value
+def calculate_next_y(y, m, c):
+    return y * m + c
+
+
+# Plot the calculated values
+def plot(x, y):
+    fig = px.line(x=x, y=y)
+    fig.show()
 
 
 def get_starting_values():
-    m = int(input('Enter the number for m: '))
-    c = int(input('Enter the number for c: '))
-    return m, c
+    m = float(input('Enter the number for m: '))
+    c = float(input('Enter the number for c: '))
+    return m, c  # Return the values as a tuple
 
 
 if __name__ == '__main__':
